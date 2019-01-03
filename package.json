@@ -1,0 +1,15 @@
+{
+  "name": "dojojokenpo",
+  "version": "1.0.0",
+  "description": "Juiz de Jokenpo que dada a jogada dos dois jogadores informa o resultado da partida.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vinicius Simone Martins",
+  "license": "ISC",
+  "dependencies": {
+    "pick-random": "^2.0.0",
+    "readline-sync": "^1.4.9"
+  }
+}
