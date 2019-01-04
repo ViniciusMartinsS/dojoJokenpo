@@ -13,34 +13,40 @@ const modoDeJogo = ["Player X Machine", "Player01 X Player02"];
  */
 
 /* Inicio app Jokenpo */
-console.log("Bem-vindo ao Jokenpo \n");
-const escolha = modoDeJogo,
-  indice = readlineSync.keyInSelect(escolha, "Escolha o modo de jogo: ", {
-    cancel: false
-  });
-const jogada01 = opcoesDeJogadas,
-  index = readlineSync.keyInSelect(jogada01, "Jogador01| Faça sua jogada", {
-    hideEchoBack: true,
-    cancel: false
-  });
-console.log("Jogada Realizada!");
-if (indice != 0) {
-  var jogada02 = opcoesDeJogadas,
-    index02 = readlineSync.keyInSelect(jogada02, "Jogador02| Faça sua jogada", {
+const jokenpo = () => {
+  console.log("Bem-vindo ao Jokenpo \n");
+  const escolha = modoDeJogo,
+    indice = readlineSync.keyInSelect(escolha, "Escolha o modo de jogo: ", {
+      cancel: false
+    });
+  const jogada01 = opcoesDeJogadas,
+    index = readlineSync.keyInSelect(jogada01, "Jogador01| Faça sua jogada", {
       hideEchoBack: true,
       cancel: false
     });
-  jogada02 = jogada02[index02];
-  var player = "Jogador02";
-  console.log("Jogada Realizada! \n");
-} else {
-  var player = "Computador";
-  jogada02 = computador.play(opcoesDeJogadas);
-}
+  console.log("Jogada Realizada!");
+  if (indice != 0) {
+    var jogada02 = opcoesDeJogadas,
+      indx = readlineSync.keyInSelect(jogada02, "Jogador02| Faça sua jogada", {
+        hideEchoBack: true,
+        cancel: false
+      });
+    jogada02 = jogada02[indx];
+    var player = "Jogador02";
+    console.log("Jogada Realizada! \n");
+  } else {
+    var player = "Computador";
+    jogada02 = computador.play(opcoesDeJogadas);
+  }
 
-console.log("Resultado Obtido: \n");
-console.log("Jogador01:", jogada01[index], `X ${player}:`, jogada02, "\n");
+  console.log("Resultado Obtido: \n");
+  console.log("Jogador01:", jogada01[index], `X ${player}:`, jogada02, "\n");
 
-const getToKonwWinner = juiz.getWinner(jogada01[index], jogada02, player);
+  const getToKonwWinner = juiz.getWinner(jogada01[index], jogada02, player);
 
-console.log(getToKonwWinner);
+  return getToKonwWinner;
+};
+
+console.log(jokenpo());
+
+module.exports = { jokenpo };
