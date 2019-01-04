@@ -1,12 +1,13 @@
 "use strict";
 
 class Papel {
-  static ganhar(jogada) {
-    return jogada === "Pedra";
+  /* Método que retorna sobre quem o papel é mais forte */
+  static win(shot) {
+    return shot === "Pedra";
   }
-
-  static empatar(jogada) {
-    return jogada === "Papel";
+  /* Método que retorna com quem o papel empata */
+  static draw(shot) {
+    return shot === "Papel";
   }
 }
 

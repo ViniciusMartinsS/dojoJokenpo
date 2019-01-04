@@ -2,10 +2,12 @@
 
 /* Imports utilizados */
 const readlineSync = require("readline-sync");
-const computador = require("./Services/Computador");
-const juiz = require("./Services/Juiz");
-const opcoesDeJogadas = ["Pedra", "Papel", "Tesoura"];
-const modoDeJogo = ["Player X Machine", "Player01 X Player02"];
+const machine = require("./Services/Machine");
+const judge = require("./Services/Judge");
+/* Opçoes de jogadas do Jokenpo */
+const playOptions = ["Pedra", "Papel", "Tesoura"];
+/*Opções de modo de jogo */
+const gameMode = ["Player X Machine", "Player01 X Player02"];
 
 /**
  *
@@ -15,38 +17,40 @@ const modoDeJogo = ["Player X Machine", "Player01 X Player02"];
 /* Inicio app Jokenpo */
 const jokenpo = () => {
   console.log("Bem-vindo ao Jokenpo \n");
-  const escolha = modoDeJogo,
-    indice = readlineSync.keyInSelect(escolha, "Escolha o modo de jogo: ", {
+  /*Recebendo a escolha do usuário: User X PC || User X User */
+  const choice = gameMode,
+    ind = readlineSync.keyInSelect(choice, "Escolha o modo de jogo: ", {
       cancel: false
     });
-  const jogada01 = opcoesDeJogadas,
-    index = readlineSync.keyInSelect(jogada01, "Jogador01| Faça sua jogada", {
+  /*Recebendo a jogada do 1º jogador */
+  const shot01 = playOptions,
+    index = readlineSync.keyInSelect(shot01, "Jogador01| Faça sua jogada", {
       hideEchoBack: true,
       cancel: false
     });
   console.log("Jogada Realizada!");
-  if (indice != 0) {
-    var jogada02 = opcoesDeJogadas,
-      indx = readlineSync.keyInSelect(jogada02, "Jogador02| Faça sua jogada", {
+  /*Caso o usuário tenha optado por jogar com outro user, entra nesse if e permite a jogada do 2º usuário */
+  if (ind != 0) {
+    var shot02 = playOptions,
+      indx = readlineSync.keyInSelect(shot02, "Jogador02| Faça sua jogada", {
         hideEchoBack: true,
         cancel: false
       });
-    jogada02 = jogada02[indx];
+    shot02 = shot02[indx];
     var player = "Jogador02";
     console.log("Jogada Realizada! \n");
+    /*Caso o usuário deseje jogar contra a máquina, chama um método,onde, a máquina randomicamente faz sua jogada entre 3 opções */
   } else {
     var player = "Computador";
-    jogada02 = computador.play(opcoesDeJogadas);
+    shot02 = machine.plays(playOptions);
   }
-
+  /*Mostra ao usuário o que foi inserido por cada participante do game */
   console.log("Resultado Obtido: \n");
-  console.log("Jogador01:", jogada01[index], `X ${player}:`, jogada02, "\n");
-
-  const getToKonwWinner = juiz.getWinner(jogada01[index], jogada02, player);
+  console.log("Jogador01:", shot01[index], `X ${player}:`, shot02, "\n");
+  /* Momento em que é chamado um método em que o juiz diz quem foi o vencedor ou se houve empate */
+  const getToKonwWinner = judge.getWinner(shot01[index], shot02, player);
 
   return getToKonwWinner;
 };
-
-console.log(jokenpo());
 
 module.exports = { jokenpo };

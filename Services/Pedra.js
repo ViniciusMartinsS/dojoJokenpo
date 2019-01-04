@@ -1,12 +1,13 @@
 "use strict";
 
 class Pedra {
-  static ganhar(jogada) {
-    return jogada === "Tesoura";
+  /* Método que retorna sobre quem a pedra é mais forte */
+  static win(shot) {
+    return shot === "Tesoura";
   }
-
-  static empatar(jogada) {
-    return jogada === "Pedra";
+  /* Método que retorna com quem a pedra empata */
+  static draw(shot) {
+    return shot === "Pedra";
   }
 }
 

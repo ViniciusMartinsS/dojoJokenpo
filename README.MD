@@ -9,8 +9,10 @@ Aplicação CMD | Dojo Jokenpo
 - 1º Git clone; <br>
 - 2º Via cmd, pasta raiz do projeto e execução dos seguintes comandos: <br>
   `npm install` <br>
-  `node index`;
+  `npm start`;
 - 3º Aguardar inicio da aplicação e jogar.
+
+<b>Obs:</b> Para rodar mocha test, basta executar: `npm test`.
 
 <b> Sobre a aplicação </b> <br>
 
@@ -20,7 +22,7 @@ Resolução CMD para o Dojo proposto de uma aplicação que objetiva a indicaç�
 
 Ao iniciar a aplicação no CMD com o seguinte comando:
 
-`node index`
+`npm start`
 
 Será perguntado qual o modo de jogo: Player X Player ou Player X Machine. <br>
 Ao escolher o modo, o player 01 faz a jogado e consecutivamente o player02 ou a máquina. <br>
