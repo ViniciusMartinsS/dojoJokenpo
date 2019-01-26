@@ -1,9 +1,11 @@
 "use strict";
 
 class Judge {
-  /* Método, onde, o juiz irá verificar quem foi o vencedor do game */
   static getWinner(shot01, shot02, player) {
     const shot = require(`./${shot01}`);
+
+    console.log("Resultado Obtido: \n");
+    console.log("Jogador01:", shot01, `X ${player}:`, shot02, "\n");
 
     if (shot.draw(shot02)) return "Empate! ";
 
