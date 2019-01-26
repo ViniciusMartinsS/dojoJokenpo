@@ -1,6 +1,6 @@
 'use strict'
 
-const readlineSync = require("readline-sync");
+const { keyInSelect } = require("readline-sync");
 const { playsMachine } = require("./Machine");
 const { secondShot } = require("./Shots");
 
@@ -8,7 +8,7 @@ class GameMode {
   static chooseWayToPlay() {
     const gameMode = ["Player X Machine", "Player01 X Player02"];
 
-  return readlineSync.keyInSelect(gameMode, "Escolha o modo de jogo: ", {
+  return keyInSelect(gameMode, "Escolha o modo de jogo: ", {
       cancel: false
     });
   }
